@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107041839) do
+ActiveRecord::Schema.define(version: 20171108040551) do
 
   create_table "drink_ingredients", force: :cascade do |t|
     t.integer "drink_id"
     t.integer "ingredient_id"
-    t.integer "quantity"
+drink
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171107041839) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
