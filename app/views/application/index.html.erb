@@ -1,7 +1,9 @@
-Hello and welcome to the page.
-You should join so you can see beverages
+<div class="center jumbotron">  
+  
+  <h1>Hello and welcome to the page.</h1>
 
- <p>
-<%= link_to "Sign up" %>
-<%= link_to "log in" %>
-</p>
+  <p>You should join so you can see beverages</p> 
+  <%= link_to("Create an account!", new_user_path, class: "btn btn-lg btn-primary") %>
+  <%= link_to('Log in with Email!', '/login', class: "btn btn-lg btn-primary") %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook', class: "btn btn-lg btn-primary") %>
+</div>
