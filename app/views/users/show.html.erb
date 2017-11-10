@@ -8,8 +8,13 @@
         Hello <%= @user.username.titlecase %>!
       </h1>
 
-    
+       <p>You've created <%= @user.drinks.count%> cocktails so far! </p>
+      <br>
 
+      <%= link_to "View your Drinks list",  user_drinks_path(@user), class: "btn btn-sm btn-primary" %>
+      <%= link_to "View the complete drinks list",  drinks_path, class: "btn btn-sm btn-primary" %>
+      <%= link_to "View the complete ingredients list",  ingredients_path, class: "btn btn-sm btn-primary" %>
+      <%= link_to "Create a new Drink",  new_user_drink_path(@user), class: "btn btn-sm btn-primary" %>
     </section>
   </aside>
 </div>

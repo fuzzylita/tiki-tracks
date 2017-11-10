@@ -1,0 +1,29 @@
+<% provide(:title, @drink.name) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+
+    <h1>
+      <%= @drink.name.titlecase %>!
+    </h1>
+
+    <p><strong>Ingredients: </strong></p>
+    <ul>
+    <% @drink.ingredients.each do |ing| %>
+      <li><%= ing.name %></li></li>
+    <% end %>
+    </ul>
+
+    <p><strong>Instructions: </strong></p>
+    <ul>
+      <li><%= @drink.instructions %></li>
+    </ul>
+    <br>
+      <%= link_to "Edit this drink?",  edit_user_drink_path(current_user, @drink), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Delete this drink?", user_drink_path(current_user, @drink), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-primary" %>  
+      <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    </section>
+  </aside>
+</div>
+

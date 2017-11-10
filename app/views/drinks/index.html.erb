@@ -1,0 +1,23 @@
+<% provide(:title, "Drinks List") %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <% if @drinks.empty? %>
+         <h1>There are no drinks!</h1>
+      <% else %>
+        <% @drinks.each do |drink| %>
+          <ul>
+          <p><strong><%= link_to drink.name, user_drink_path(current_user, drink) %></strong></p>
+          </ul>
+        <% end %>
+      <% end %>
+      <br>
+      <%= link_to "Create a new Drink",  new_user_drink_path(current_user), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    </section>
+  </aside>
+</div>
+
+
+

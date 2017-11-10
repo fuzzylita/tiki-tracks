@@ -1,9 +1,14 @@
 <div class="center jumbotron">  
   
-  <h1>Hello and welcome to the page.</h1>
+  <h1>Hello and welcome to Tiki-Tiki</h1>
 
-  <p>You should join so you can see beverages</p> 
-  <%= link_to("Create an account!", new_user_path, class: "btn btn-lg btn-primary") %>
-  <%= link_to('Log in with Email!', '/login', class: "btn btn-lg btn-primary") %>
+  <p><strong> Sign up to join our merry band of beverage enthusiasts!</strong></p>
+  
+  <p>Now with 150% more Rails. 😖 </p> 
+
+  <p><%= pluralize(User.all.count, "new friend") %> sharing recipes! Join the fun.</p>
+
+  <%= link_to("New? Create an account!", new_user_path, class: "btn btn-lg btn-primary") %>
+  <%= link_to('Already a user? Log in!', '/login', class: "btn btn-lg btn-primary") %>
   <%= link_to('Log in with Facebook!', '/auth/facebook', class: "btn btn-lg btn-primary") %>
 </div>

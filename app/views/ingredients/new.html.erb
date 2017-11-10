@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    
+    <br><br>
+
+    <%= form_for @ingredient do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %> <br>
+
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

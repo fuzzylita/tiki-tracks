@@ -3,10 +3,14 @@
     <%= link_to "Tiki-Tiki Cocktail Database", '/', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+      <% if !logged_in? %>
         <li><%= link_to "Home", root_path%></li>
-        <li><%= link_to "Sign Up", '#' %></li>
-        <li><%= link_to "Log In", '#' %></li>
+        <li><%= link_to "Sign Up", new_user_path %></li>
+        <li><%= link_to "Log In", login_path %></li>
+      <% else %>
+        <li><%= link_to "Home", user_path(current_user) %></li>
         <li><%= link_to "Log Out", logout_path, method: "post" %></li>
+      <% end %>
       </ul>
     </nav>
   </div>

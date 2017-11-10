@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   helper_method :current_user, :logged_in?, :require_login
   
   before_action :require_login
@@ -9,6 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def record_not_found
+    render file: "#{Rails.root}/public/404", layout: true, status: :not_found
+  end
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])

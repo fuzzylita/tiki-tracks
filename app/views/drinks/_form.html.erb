@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render partial: 'layouts/error', locals: { object: @drink } %>
+    <%= link_to "Add a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    
+    <br><br>
+
+    <%= form_for @drink, :url => "/users/#{current_user.id}/drinks/#{@drink.id}" do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %> <br>
+
+      <h2>Ingredients</h2>
+      <%= f.fields_for :ingredients do |di| %>
+        <%= di.label "blurp" %>
+      <% end %>
+
+      <br><br>
+
+      <%= f.label :instructions %>
+      <%= f.text_area :instructions %> 
+
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

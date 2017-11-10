@@ -1,4 +1,19 @@
-<% ingredients.each do |ing| %>
-  <%= ing.name %>
-  <%= ing.description %>
-<% end %>
+<% provide(:title, "Ingredients List") %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <% if ingredients.empty? %>
+         <h1>There are no ingredients!</h1>
+      <% else %>
+        <% ingredients.each do |ing| %>
+          <ul>
+          <p><strong><%= ing.name %></strong></p>
+          </ul>
+        <% end %>
+      <% end %>
+      <br>
+      <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    </section>
+  </aside>
+</div>

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    # TODO: the below check needs to be included in the drinks controller
     if @user.id == params[:id].to_i
       render :show
     else
