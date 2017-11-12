@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= render partial: 'layouts/error', locals: { object: @drink } %>
-    <%= link_to "Add a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    <%= link_to "Create a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
     
     <br><br>
 
@@ -9,12 +9,37 @@
       <%= f.label :name %>
       <%= f.text_field :name %> <br>
 
-      <h2>Ingredients</h2>
-      <%= f.fields_for :ingredients do |di| %>
-        <%= di.label "blurp" %>
+    <% if @drink.id %>
+      <h2>Select an Ingredient</h2>
+      <% @drink.ingredients.each.with_index do |ingredient, index| %>
+        <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-', :selected => ingredient.id}, :name => "drink[ingredients][#{index}][id]" %>
+          <label>Quantity</label>
+          <input type="text" name="drink[ingredients][<%= index %>][quantity]" value="<%= find_quantity @drink, ingredient %>"><br>
       <% end %>
 
+      <br><h2>Add Ingredients</h2><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][0][id]" %>
+          <label>Quantity</label>
+          <input type="text" name="drink[ingredients_attributes][0][quantity]"><br>
+    <% else %>
+    <br><h2>Add a new Ingredient</h2><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][0][id]" %>
+          <label>Quantity</label>
+          <input type="text" name="drink[ingredients_attributes][0][quantity]"><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][1][id]" %>
+        <label>Quantity</label>
+        <input type="text" name="drink[ingredients_attributes][1][quantity]"><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][2][id]" %>
+        <label>Quantity</label>
+        <input type="text" name="drink[ingredients_attributes][[2][quantity]"><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][3][id]" %>
+        <label>Quantity</label>
+        <input type="text" name="drink[ingredients_attributes][3][quantity]"><br>
+      <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "drink[ingredients_attributes][4][id]" %>
+        <label>Quantity</label>
+        <input type="text" name="drink[ingredients_attributes][4][quantity]"><br>
       <br><br>
+    <% end %>
 
       <%= f.label :instructions %>
       <%= f.text_area :instructions %> 

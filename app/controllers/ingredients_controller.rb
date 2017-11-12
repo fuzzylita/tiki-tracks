@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
   def index
+    @ingredients = Ingredient.order(:name)
   end
 
   def new
@@ -9,7 +10,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.find_or_create_by(name: ingredient_params[:name])
     if @ingredient.save
-      redirect_to new_user_drink_path(current_user)
+      redirect_to ingredients_path
     else
       render :'drink/new'
     end

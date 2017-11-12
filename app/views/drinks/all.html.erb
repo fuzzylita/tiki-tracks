@@ -8,7 +8,8 @@
       <% else %>
         <% @drinks.each do |drink| %>
           <ul>
-          <p><strong><%= link_to drink.name, drink_path(drink) %></strong></p>
+          <li><strong><%= link_to drink.name.titlecase, drink_path(drink) %></strong> 
+          Created by <%= drink.user.username.titlecase %> on <%= drink.created_at.to_date.to_formatted_s(:long) %></li>
           </ul>
         <% end %>
       <% end %>

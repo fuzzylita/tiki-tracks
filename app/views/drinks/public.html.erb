@@ -7,11 +7,14 @@
     <h1>
       <%= @drink.name.titlecase %>!
     </h1>
-
+    <hr>
     <p><strong>Ingredients: </strong></p>
     <ul>
     <% @drink.ingredients.each do |ing| %>
-      <li><%= ing.name %></li></li>
+      <li><%= ing.name.titlecase %> - <%= find_quantity(@drink, ing).titlecase %></li>
+    <% end %>
+    <% if @drink.ingredients.count == 3 %>
+      <li>Add bitters to make a proper cocktail!</li>
     <% end %>
     </ul>
 
@@ -20,7 +23,7 @@
       <li><%= @drink.instructions %></li>
     </ul>
     <br>
-    <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    <%= link_to "Go Back", :back, class: "btn btn-sm btn-primary" %>
     </section>
   </aside>
 </div>

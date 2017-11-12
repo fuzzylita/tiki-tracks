@@ -8,7 +8,7 @@
       <% else %>
         <% @drinks.each do |drink| %>
           <ul>
-          <p><strong><%= link_to drink.name, user_drink_path(current_user, drink) %></strong></p>
+          <li><strong><%= link_to drink.name.titlecase, user_drink_path(current_user, drink) %></strong></li>
           </ul>
         <% end %>
       <% end %>

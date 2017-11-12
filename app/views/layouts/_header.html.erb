@@ -8,8 +8,11 @@
         <li><%= link_to "Sign Up", new_user_path %></li>
         <li><%= link_to "Log In", login_path %></li>
       <% else %>
-        <li><%= link_to "Home", user_path(current_user) %></li>
-        <li><%= link_to "Log Out", logout_path, method: "post" %></li>
+        <li><%= link_to "Home 🏠", user_path(current_user) %></li>
+        <li><%= link_to "All Ingredients 🍍",  ingredients_path %></li>
+        <li><%= link_to "All Drinks 🍹",  drinks_path %></li>
+        <li><%= link_to "Proper Cocktails 🥃",  proper_path %></li>
+        <li><%= link_to "Log Out 👋", logout_path, method: "post" %></li>
       <% end %>
       </ul>
     </nav>

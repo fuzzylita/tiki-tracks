@@ -1,7 +1,9 @@
+<% provide(:title, 'New Ingredient') %>
+<%= link_to "Go Back", :back, class: "btn btn-sm btn-primary" %>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
     
+    <h1>Add a new ingredient!</h1>
     <br><br>
 
     <%= form_for @ingredient do |f| %>

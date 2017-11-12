@@ -2,11 +2,10 @@
   
   <h1>Hello and welcome to Tiki-Tiki</h1>
 
-  <p><strong> Sign up to join our merry band of beverage enthusiasts!</strong></p>
-  
+  <hr>
   <p>Now with 150% more Rails. 😖 </p> 
 
-  <p><%= pluralize(User.all.count, "new friend") %> sharing recipes! Join the fun.</p>
+  <p><%= pluralize(User.all.count, "new friend") %> creating drinks! Join us.</p>
 
   <%= link_to("New? Create an account!", new_user_path, class: "btn btn-lg btn-primary") %>
   <%= link_to('Already a user? Log in!', '/login', class: "btn btn-lg btn-primary") %>

@@ -20,16 +20,16 @@ end
   d = User.first.drinks.create(name: random_name, instructions: random_name)
 
   ings = Ingredient.all.sample(3)
-
   ings.each do |ing|
     d.ingredients << ing
   end
-end
 
-Drink.all.each do |d|
   d.ingredients.each do |i|
     i.drink_ingredients.each do |di|
-      di = quantity = (1..3).to_a.sample
+      di.quantity = (1..3).to_a.sample
+      di.save
     end
   end
+
+  d.save
 end
