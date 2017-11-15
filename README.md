@@ -1,7 +1,7 @@
 # Tiki-Tracks - Rails-based Cocktail CMS
 
 ## Overview
-A simple, content management system for cocktail recipes. Once signed up, users can create cocktails and and save them to their personal library. Users can create drinks and ingredients, which are added to the communal database. Users can manage their own recipes, and instantly generate liquor shopping lists by filtering out a list of ingredients specific to their cocktail library. Users can view the complete list of recipes for all users, but write permissions are restricted to their own drinks. 
+A simple, content management system for cocktail recipes. Once signed up, users can create cocktails and and save them to their personal library. Users can create drinks and ingredients, which are added to the communal database. Users can manage their own recipes, and can view the complete list of recipes for all users, but write permissions are restricted to their own drinks. 
 
 ## Requirements
 
