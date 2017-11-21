@@ -4,4 +4,7 @@ class Ingredient < ApplicationRecord
 
   validates :name, presence: true
 
+  def self.formatted_list
+    @ingredients_list ||= all.collect {|x| [x.name, x.id]}
+  end
 end

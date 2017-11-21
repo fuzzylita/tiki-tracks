@@ -8,7 +8,7 @@ class DrinksController < ApplicationController
   # * PUBLIC VIEW *
 
   def all
-    @drinks = Drink.order(:name)
+    @drinks = Drink.order_by_name
   end
   
   def public
@@ -18,7 +18,7 @@ class DrinksController < ApplicationController
 
   def index
     user = User.find_by(id: params[:user_id])
-    @drinks = user.drinks.order(:name)
+    @drinks = user.drinks.order_by_name
   end
 
   def new
@@ -56,7 +56,7 @@ class DrinksController < ApplicationController
   end
 
   def proper
-    @drinks = Drink.proper_cocktails.order(:name)
+    @drinks = Drink.proper_cocktails
   end
 
   private

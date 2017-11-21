@@ -5,9 +5,8 @@ class Drink < ApplicationRecord
 
   validates :name, :instructions, :drink_ingredients, presence: true
 
-  accepts_nested_attributes_for :drink_ingredients
-
-  scope :proper_cocktails, -> { joins(:ingredients).group("drinks.id").having("COUNT(drink_id) = 3") }
+  scope :order_by_name, -> { order("LOWER(name)") }
+  scope :proper_cocktails, -> { joins(:ingredients).group("drinks.id").having("COUNT(drink_id) = 3").order("LOWER(drinks.name)") }
   
   def ingredients_attributes=(ingredients_attributes)
     ingredients_attributes.each do |key, value|
