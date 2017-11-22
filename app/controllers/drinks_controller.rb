@@ -1,4 +1,4 @@
-class DrinksController < ApplicationController
+ class DrinksController < ApplicationController
   before_action :find_drink, only: [:public, :show, :edit, :update, :destroy]
   before_action :unauthorized_drink, only: [:show, :edit, :update, :destroy]  
   before_action :unauthorized_user

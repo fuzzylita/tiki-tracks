@@ -7,6 +7,8 @@
     <h1>
       <%= @drink.name.titlecase %>!
     </h1>
+     Drink Rating: <%= @drink.ratings.average(:rating) %>
+     
     <hr>
     <p><strong>Ingredients: </strong></p>
     <ul>
@@ -20,10 +22,13 @@
 
     <p><strong>Instructions: </strong></p>
     <ul>
-      <li><%= @drink.instructions %></li>
+      <li><%= @drink.instructions
+       %></li>
     </ul>
     <br>
     <%= link_to "Go Back", :back, class: "btn btn-sm btn-primary" %>
+    <br><br>
+    <%= render partial: 'ratings/rate_form', locals: { drink: @drink } %>
     </section>
   </aside>
 </div>

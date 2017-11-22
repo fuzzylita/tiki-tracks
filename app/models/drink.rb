@@ -1,5 +1,6 @@
 class Drink < ApplicationRecord
   belongs_to :user
+  has_many :ratings, dependent: :destroy
   has_many :drink_ingredients, dependent: :destroy
   has_many :ingredients, through: :drink_ingredients
 
@@ -24,10 +25,13 @@ class Drink < ApplicationRecord
   end
 
   def ingredients=(ingredients)
-    #{"0"=>{"id"=>"5", "quantity"=>"2"}, "1"=>{"id"=>"7", "quantity"=>""}, "2"=>{"id"=>"3", "quantity"=>""}}
+    # example ingredients hash
+    # {"0"=>{"id"=>"5", "quantity"=>"2"}, "1"=>{"id"=>"7", "quantity"=>""}, "2"=>{"id"=>"3", "quantity"=>""}}
     
-    # This is now a static array. We need this to keep track of the originial state of the drink
-    # otherwise we'd modify the array as you iterate. Bad.
+    # we create a static array of the ingredients in the drink. 
+    # We need this copy to keep track of the ingredients in the originial state of the drink
+    # this allows us to compare the state while we modify the collection
+
     original_ingredients = self.ingredients.to_ary
 
     ingredients.each do |ing_idx, ingredient_object|
@@ -60,7 +64,7 @@ class Drink < ApplicationRecord
       self.ingredients.delete(original_ing)
       self.ingredients << Ingredient.find(ingredient_object[:id].to_i)
       dr_ing = DrinkIngredient.find_by(
-        :drink_id => self.id, 
+        :drink_id => self.id,
         :ingredient_id => ingredient_object[:id].to_i
         )
       dr_ing.quantity = ingredient_object[:quantity]
