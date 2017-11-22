@@ -8,7 +8,7 @@
       <% else %>
         <% @drinks.each do |drink| %>
           <ul>
-          <li><strong><%= link_to drink.name.titlecase, user_drink_path(current_user, drink) %></strong></li>
+          <li><strong><%= link_to drink.name.titlecase, user_drink_path(current_user, drink) %></strong>- Rating: <%= drink.ratings.average(:rating) %></li>
           </ul>
         <% end %>
       <% end %>

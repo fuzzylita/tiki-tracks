@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= render partial: 'layouts/error', locals: { object: @drink } %>
-    <%= link_to "Create a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+    <%= link_to "Create
+     a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
     
     <br><br>
 
@@ -10,7 +11,7 @@
       <%= f.text_field :name %> <br>
 
     <% if @drink.id %>
-    
+      <!-- This is the edit scenario, triggered if the form is rendered by the edit action -->
       <h2>Select an Ingredient</h2>
       <% @drink.ingredients.each.with_index do |ingredient, index| %>
         <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-', :selected => ingredient.id}, :name => "drink[ingredients][#{index}][id]" %>
@@ -24,7 +25,7 @@
           <input type="text" name="drink[ingredients_attributes][0][quantity]"><br>
     
     <% else %>
-  
+      <!-- This is the new scenario if the form is rendered from the new action -->
       <br>
       <h2>Add a new Ingredient</h2><br>
       <% 5.times do |idx| %>

@@ -7,6 +7,7 @@
     <h1>
       <%= @drink.name.titlecase %>!
     </h1>
+    Drink Rating: <%= @drink.ratings.average(:rating) %>
 
     <p><strong>Ingredients: </strong></p>
     <ul>
@@ -15,10 +16,12 @@
     <% end %>
     </ul>
 
+
     <p><strong>Instructions: </strong></p>
     <ul>
       <li><%= @drink.instructions %></li>
     </ul>
+    <%= render partial: 'ratings/rate_form', locals: { drink: @drink } %>
     <br>
       <%= link_to "Edit this drink?",  edit_user_drink_path(current_user, @drink), class: "btn btn-sm btn-primary" %>
       <%= link_to "Delete this drink?", user_drink_path(current_user, @drink), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-primary" %>  

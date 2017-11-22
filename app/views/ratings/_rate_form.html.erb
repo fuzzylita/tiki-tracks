@@ -1,0 +1,7 @@
+<%= form_for Rating.new do |f| %>
+  <%= f.label "Rate this Drink" %>
+  <%= f.number_field :rating, min: 0, max: 5 %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :drink_id, value: drink.id %>
+<%= f.submit class: "btn btn-primary" %>
+<% end %>
