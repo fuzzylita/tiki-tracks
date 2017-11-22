@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'drink_ingredients/new'
   get 'drink_ingredients/create'
+  post 'rating', to: 'ratings#create', as: :ratings
 
   resources :users, only: [:show, :new, :create] do
     resources :drinks
