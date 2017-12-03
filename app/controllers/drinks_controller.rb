@@ -9,6 +9,10 @@
 
   def all
     @drinks = Drink.order_by_name
+    respond_to do |format|
+      format.html { render :all }
+      format.json { render json: @drinks}
+    end
   end
   
   def public
@@ -36,6 +40,10 @@
   end
 
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @drink}
+    end
   end
 
   def edit
