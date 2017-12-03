@@ -10,12 +10,16 @@
   def all
     @drinks = Drink.order_by_name
     respond_to do |format|
-      format.html { render :all }
+      format.html
       format.json { render json: @drinks}
     end
   end
   
   def public
+    respond_to do |format|
+      format.html
+      format.json { render json: @drink}
+    end
   end
 
   # * USER VIEW *
@@ -23,6 +27,10 @@
   def index
     user = User.find_by(id: params[:user_id])
     @drinks = user.drinks.order_by_name
+    respond_to do |format|
+      format.html
+      format.json { render json: @drinks}
+    end
   end
 
   def new
@@ -41,7 +49,7 @@
 
   def show
     respond_to do |format|
-      format.html { render :show }
+      format.html
       format.json { render json: @drink}
     end
   end
@@ -65,6 +73,10 @@
 
   def proper
     @drinks = Drink.proper_cocktails
+    respond_to do |format|
+      format.html
+      format.json { render json: @drinks}
+    end
   end
 
   private
