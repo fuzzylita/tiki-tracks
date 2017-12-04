@@ -10,19 +10,15 @@ class RatingsController < ApplicationController
 
     if rating.save
       drink = Drink.find(rating_params[:drink_id])
-      if rating_params[:user_id] == drink.user.id
-        redirect_to user_drink_path(drink.user.id, drink.id)
-      else
-        redirect_to drink_path(drink.id)
-      end
+      render json: drink
     else
-      redirect_to :back, error: "Problem saving the rating. Please try again."
+      render json: {messages: "Problem saving the rating. Please try again."}, status: :bad_request
     end
   end
 
   private
 
   def rating_params
-    params.require(:rating).permit(:rating, :user_id, :drink_id)
+    params.permit(:rating, :user_id, :drink_id)
   end
 end

@@ -67,7 +67,7 @@ function getDrink(path) {
         ${drink.name}!
       </h1>
       Drink Rating:
-      <div id="rating">${drink.rating}</div><br>
+      <input id="current_rating" type="text" class="rating" data-size="xs"><br>
 
       <p><strong>Ingredients: </strong></p>
       <ul id="ingredients_list">
@@ -79,6 +79,9 @@ function getDrink(path) {
       </ul>
       <br>
     `)
+    
+    $("#current_rating").rating("refresh", {displayOnly: true, showCaption: false, showClear: false}); // displays uneditable current rating on the screen
+    $("#current_rating").rating("update", drink.rating)
 
     let ing = $("#ingredients_list")
 

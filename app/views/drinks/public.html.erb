@@ -6,19 +6,18 @@
 
       <div id="drink_info">
       </div>
-      <input id="input-id" type="text" class="rating" data-size="xs" >
 
     </section>
+    Rate this drink!
+    <input id="rating_control" type="text" class="rating" data-size="xs" >
   </aside>
 </div>
 
 <script>
   $(function() {
     getDrink("<%= drink_path(@drink) %>")
-    $("#input-id").rating();
-    $('#input-id').on('rating:change', function(event, value, caption) {
-      console.log(value);
-      console.log(caption);
-    });
+    $("#current_rating").rating("refresh", {displayOnly: true, showCaption: false, showClear: false}); // displays uneditable current rating on the screen
+    $("#rating_control").rating("refresh", {showCaption: false, showClear: false});
+    $("#rating_control").on('rating:change', makeRatingFunc("<%= current_user.id %>", "<%= @drink.id%>"));
   })
 </script>
