@@ -8,10 +8,12 @@
   # * PUBLIC VIEW *
 
   def all
-    @drinks = Drink.order_by_name
     respond_to do |format|
       format.html
-      format.json { render json: @drinks}
+      format.json { 
+        @drinks = Drink.order_by_name        
+        render json: @drinks
+      }
     end
   end
   

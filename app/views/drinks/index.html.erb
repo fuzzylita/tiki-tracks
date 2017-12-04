@@ -3,21 +3,19 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <% if @drinks.empty? %>
-         <h1>There are no drinks!</h1>
-      <% else %>
-        <% @drinks.each do |drink| %>
-          <ul>
-          <li><strong><%= link_to drink.name.titlecase, user_drink_path(current_user, drink) %></strong>- Rating: <%= drink.ratings.average(:rating) %></li>
+        <div>
+          <ul id="drinks_list">
           </ul>
-        <% end %>
-      <% end %>
-      <br>
+        </div>
       <%= link_to "Create a new Drink",  new_user_drink_path(current_user), class: "btn btn-sm btn-primary" %>
       <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
     </section>
   </aside>
 </div>
 
-
+<script>
+  $(function() {
+    getDrinks("<%= user_drinks_path(current_user) %>")
+  })
+</script>
 
