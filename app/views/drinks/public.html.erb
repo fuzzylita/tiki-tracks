@@ -6,6 +6,7 @@
 
       <div id="drink_info">
       </div>
+      <input id="input-id" type="text" class="rating" data-size="xs" >
 
     </section>
   </aside>
@@ -14,5 +15,10 @@
 <script>
   $(function() {
     getDrink("<%= drink_path(@drink) %>")
+    $("#input-id").rating();
+    $('#input-id').on('rating:change', function(event, value, caption) {
+      console.log(value);
+      console.log(caption);
+    });
   })
 </script>

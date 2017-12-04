@@ -22,9 +22,13 @@ class Drink {
   }
 }
 
+// **** HELPERS ****
+
 function linkTo(name, path) {
   return `<a href="${path}">${name}</a>`
 }
+
+// **** INDEX PAGE TEMPLATE ****
 
 function getDrinks(path) {
   $.getJSON(path, (resp) => {
@@ -47,6 +51,8 @@ function getDrinks(path) {
   })
 }
 
+// **** DRINK DETAIL PAGE CONTENT ****
+
 function getDrink(path) {
   $.getJSON(path, (resp) => {
     if (resp === null ) {
@@ -60,6 +66,8 @@ function getDrink(path) {
       <h1>
         ${drink.name}!
       </h1>
+      Drink Rating:
+      <div id="rating">${drink.rating}</div><br>
 
       <p><strong>Ingredients: </strong></p>
       <ul id="ingredients_list">
