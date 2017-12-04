@@ -4,32 +4,15 @@
   <aside class="col-md-4">
     <section class="user_info">
 
-    <h1>
-      <%= @drink.name.titlecase %>!
-    </h1>
-     Drink Rating: <%= @drink.ratings.average(:rating) %>
-     
-    <hr>
-    <p><strong>Ingredients: </strong></p>
-    <ul>
-    <% @drink.ingredients.each do |ing| %>
-      <li><%= ing.name.titlecase %> - <%= find_quantity(@drink, ing).titlecase %></li>
-    <% end %>
-    <% if @drink.ingredients.count == 3 %>
-      <li>Add bitters to make a proper cocktail!</li>
-    <% end %>
-    </ul>
+      <div id="drink_info">
+      </div>
 
-    <p><strong>Instructions: </strong></p>
-    <ul>
-      <li><%= @drink.instructions
-       %></li>
-    </ul>
-    <br>
-    <%= link_to "Go Back", :back, class: "btn btn-sm btn-primary" %>
-    <br><br>
-    <%= render partial: 'ratings/rate_form', locals: { drink: @drink } %>
     </section>
   </aside>
 </div>
 
+<script>
+  $(function() {
+    getDrink("<%= drink_path(@drink) %>")
+  })
+</script>

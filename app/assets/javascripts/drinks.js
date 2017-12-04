@@ -36,7 +36,6 @@ function getDrinks(path) {
 
     resp.forEach(function(item) {
       let drink = new Drink(item)
-
       $("#drinks_list").append(`
       <li>
         <strong>${linkTo(drink.name, `${path}/${drink.id}`)}</strong><br>
@@ -57,7 +56,6 @@ function getDrink(path) {
     }
 
     let drink = new Drink(resp)
-
     $("#drink_info").append(`
       <h1>
         ${drink.name}!
@@ -71,7 +69,6 @@ function getDrink(path) {
       <ul>
         <li>${drink.instructions}</li>
       </ul>
-      <%= render partial: 'ratings/rate_form', locals: { drink: @drink } %>
       <br>
     `)
 
@@ -82,5 +79,11 @@ function getDrink(path) {
       <li>${el.name} - ${el.quantity}</li>      
       `)
     })
+
+    if (drink.ingredients.length === 3 && path.includes("users") === false) {
+      ing.append(`
+      <li>Add bitters to make a proper cocktail!</li>
+      `)
+    }
   })
 }
