@@ -2,7 +2,7 @@
   <div class="col-md-6 col-md-offset-3">
     <%= render partial: 'layouts/error', locals: { object: @drink } %>
     <%= link_to "Create
-     a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+     a New Ingredient", ingredients_path, class: "btn btn-sm btn-primary" %>  <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
     
     <br><br>
 
@@ -35,7 +35,7 @@
       <br>
 
       <a href="#" id="new-ingredient" class="btn btn-primary" onclick="addIngredientFields()">Add Another Ingredient</a><br><br>
-
+      
       <%= f.label :instructions %>
       <%= f.text_area :instructions %> 
 

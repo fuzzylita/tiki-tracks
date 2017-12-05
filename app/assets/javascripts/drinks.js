@@ -89,6 +89,8 @@ function getDrink(path) {
       <br>
     `)
 
+    // **** EXPERT MODE ****
+    
     // This comes from the star_rating library to translate the rating visually into stars. 
     // This syntax below comes from the documentation for that library. 
     // First line is a configuration setting specifed, second is the command that sets the display val.
