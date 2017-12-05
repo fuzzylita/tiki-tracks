@@ -11,7 +11,7 @@
     respond_to do |format|
       format.html
       format.json { 
-        @drinks = Drink.order_by_name        
+        @drinks = Drink.order_by_name   
         render json: @drinks
       }
     end
