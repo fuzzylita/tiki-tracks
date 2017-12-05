@@ -14,10 +14,19 @@
 </div>
 
 <script>
+
   $(function() {
+    // this just takes advantage of the JS function we built to show the drink show page via JS
     getDrink("<%= drink_path(@drink) %>")
+
+    //this is from the star_rating library which sets the appearance settings and then 
+    // displays the rating number in the stars
     $("#current_rating").rating("refresh", {displayOnly: true, showCaption: false, showClear: false}); // displays uneditable current rating on the screen
     $("#rating_control").rating("refresh", {showCaption: false, showClear: false});
+
+    // rating:change is from the library. It triggers an event when clicked which we handle in the
+    // ratings JS fucntion
+    
     $("#rating_control").on('rating:change', makeRatingFunc("<%= current_user.id %>", "<%= @drink.id%>"));
   })
 </script>

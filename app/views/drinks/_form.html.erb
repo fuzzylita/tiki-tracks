@@ -10,32 +10,31 @@
       <%= f.label :name %>
       <%= f.text_field :name %> <br>
 
-    <% if @drink.id %>
-      <!-- This is the edit scenario, triggered if the form is rendered by the edit action -->
-      <h2>Select an Ingredient</h2>
-      <% @drink.ingredients.each.with_index do |ingredient, index| %>
-        <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-', :selected => ingredient.id}, :name => "drink[ingredients][#{index}][id]" %>
-          <label>Quantity</label>
-          <input type="text" name="drink[ingredients][<%= index %>][quantity]" value="<%= find_quantity @drink, ingredient %>"><br>
+      <% if @drink.id %>
+        <!-- This is the edit scenario, triggered if the form is rendered by the edit action -->
+        <h2>Select an Ingredient</h2>
+        <% @drink.ingredients.each.with_index do |ingredient, index| %>
+          <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-', :selected => ingredient.id}, :name => "drink[ingredients][#{index}][id]" %>
+            <label>Quantity</label>
+            <input type="text" name="drink[ingredients][<%= index %>][quantity]" value="<%= find_quantity @drink, ingredient %>"><br>
+        <% end %>
       <% end %>
 
-      <br><h2>Add Ingredients</h2><br>
-      <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-'}, :name => "drink[ingredients_attributes][0][id]" %>
-          <label>Quantity</label>
-          <input type="text" name="drink[ingredients_attributes][0][quantity]"><br>
-    
-    <% else %>
-      <!-- This is the new scenario if the form is rendered from the new action -->
+      <!-- This form can now be used for both edit and new -->
+
       <br>
       <h2>Add a new Ingredient</h2><br>
-      <% 5.times do |idx| %>
-        <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-'}, :name => "drink[ingredients_attributes][#{idx}][id]" %>
+      
+      <div id="ingredient-appender">
+        <div class="ingredient-selector">
+          <%= f.select :ingredients, Ingredient.formatted_list, {:include_blank => '-'}, :name => "drink[ingredients_attributes][][id]" %>
           <label>Quantity</label>
-          <input type="text" name="drink[ingredients_attributes][<%= idx %>][quantity]"><br>
-      <% end %>
-      <br><br>
-    
-    <% end %>
+          <input type="text" name="drink[ingredients_attributes][][quantity]"><br>
+        </div>
+      </div>
+      <br>
+
+      <a href="#" id="new-ingredient" class="btn btn-primary" onclick="addIngredientFields()">Add Another Ingredient</a><br><br>
 
       <%= f.label :instructions %>
       <%= f.text_area :instructions %> 

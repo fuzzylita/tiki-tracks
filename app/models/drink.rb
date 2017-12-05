@@ -10,7 +10,7 @@ class Drink < ApplicationRecord
   scope :proper_cocktails, -> { joins(:ingredients).group("drinks.id").having("COUNT(drink_id) = 3").order("LOWER(drinks.name)") }
   
   def ingredients_attributes=(ingredients_attributes)
-    ingredients_attributes.each do |key, value|
+    ingredients_attributes.each_with_index do |value, idx|
       next if value[:id].blank?
       
       ingredient = Ingredient.find_by(:id => value[:id])

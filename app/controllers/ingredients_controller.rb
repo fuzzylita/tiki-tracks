@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
     @ingredients = Ingredient.order('LOWER(name)')
     respond_to do |format|
       format.html
-      format.json { render json: @ingredients}
+      format.json { render json: @ingredients }
     end
   end
 
@@ -12,11 +12,18 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.find_or_create_by(name: ingredient_params[:name])
-    if @ingredient.save
-      redirect_to ingredients_path
+    ingredient_params[:name].downcase!
+    ingredient = Ingredient.find_by(name: ingredient_params[:name])
+    if ingredient  
+      render json: { messages: "Ingredient already exists, yo." }, status: :conflict
+      return
+    end
+
+    ingredient = Ingredient.new(ingredient_params)
+    if ingredient.save
+      render json: ingredient
     else
-      render :'drink/new'
+      render json: { messages: ingredient.errors.messages }, status: :bad_request
     end
   end
 

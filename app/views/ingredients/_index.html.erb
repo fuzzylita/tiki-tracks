@@ -1,8 +1,9 @@
 <% provide(:title, "Ingredients List") %>
-
+<%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
+    <div id="error"></div>
 
     <h1>Tiki-Tiki Ingredients!</h1>
     <hr>
@@ -10,14 +11,14 @@
          <h1>There are no ingredients!</h1>
       <% else %>
         <% ingredients.each do |ing| %>
-          <ul>
-          <p><strong><%= ing.name.titlecase %></strong></p>
+          <ul id="ingredients-list">
+          <li><strong><%= ing.name.titlecase %></strong></li>
           </ul>
         <% end %>
       <% end %>
       <br>
-      <%= link_to "Add a New Ingredient", new_ingredient_path, class: "btn btn-sm btn-primary" %> 
-      <%= link_to "Go Back",  user_path(current_user), class: "btn btn-sm btn-primary" %>
+      <input type="text" id="new-ingredient"/>
+      <button type="submit" class="btn btn-sm btn-primary" onclick="createIngredient();return false">Add a New Ingredient</button>
     </section>
   </aside>
 </div>

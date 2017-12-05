@@ -20,7 +20,7 @@
   def public
     respond_to do |format|
       format.html
-      format.json { render json: @drink}
+      format.json { render json: @drink }
     end
   end
 
@@ -31,7 +31,7 @@
     @drinks = user.drinks.order_by_name
     respond_to do |format|
       format.html
-      format.json { render json: @drinks}
+      format.json { render json: @drinks }
     end
   end
 
@@ -52,7 +52,7 @@
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @drink}
+      format.json { render json: @drink }
     end
   end
 
@@ -77,7 +77,7 @@
     @drinks = Drink.proper_cocktails
     respond_to do |format|
       format.html
-      format.json { render json: @drinks}
+      format.json { render json: @drinks }
     end
   end
 
