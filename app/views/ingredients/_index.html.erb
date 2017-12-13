@@ -10,11 +10,11 @@
       <% if ingredients.empty? %>
          <h1>There are no ingredients!</h1>
       <% else %>
+        <ul id="ingredients-list">
         <% ingredients.each do |ing| %>
-          <ul id="ingredients-list">
-          <li><strong><%= ing.name.titlecase %></strong></li>
-          </ul>
+            <li><strong><%= ing.name.titlecase %></strong></li>
         <% end %>
+        </ul>
       <% end %>
       <br>
       <input type="text" id="new-ingredient"/>
