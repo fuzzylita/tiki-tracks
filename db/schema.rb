@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20171121203718) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.integer "rating"
+    t.float "rating"
     t.integer "drink_id"
     t.integer "user_id"
   end

@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
       drink_id: rating_params[:drink_id].to_i
     )
 
-    rating.rating = rating_params[:rating].to_i
+    rating.rating = rating_params[:rating].to_f
 
     if rating.save
       drink = Drink.find(rating_params[:drink_id])
