@@ -11,7 +11,6 @@ class Drink {
   }
 
   // this method just shows the date more nicely in the index page
-
   formatted_date() {
     return this.created_at.toLocaleDateString()
   }
@@ -19,7 +18,6 @@ class Drink {
   // this method is a custom getter that allows the JS obj to display a more
   // user friendly message. It could have been done in the template, but I felt it was
   // more closely related to the state of the object, so made sense to include
-
   get rating() {
     if (this.unformatted_rating === null) {
       return "Not Rated Yet!"
@@ -37,7 +35,6 @@ function linkTo(name, path) {
 // **** INDEX PAGE TEMPLATE ****
 
 // we append the drinks list to an empty div which is sitting on the page.
-
 function getDrinks(path) {
   $.getJSON(path, (resp) => {
     if (resp === null ) {
@@ -96,12 +93,12 @@ function getDrink(path) {
     // First line is a configuration setting specifed, second is the command that sets the display val.
     // 'rating' here is not related to the rating for the drink, the library has a custom jquery method
     // on elements 
-    
-    $("#current_rating").rating("refresh", {displayOnly: true, showCaption: false, showClear: false}); // displays uneditable current rating on the screen
+
+    // displays uneditable current rating on the screen
+    $("#current_rating").rating("refresh", {displayOnly: true, showCaption: false, showClear: false});
     $("#current_rating").rating("update", drink.rating)
 
     // the template is created above, now I'm going to append each ingredient as an li to that list
-
     let ing = $("#ingredients_list")
 
     drink.ingredients.forEach(function(el) {
@@ -111,7 +108,6 @@ function getDrink(path) {
     })
 
     // only the public view should show the message about making a drink a proper cocktail
-
     if (drink.ingredients.length === 3 && path.includes("users") === false) {
       ing.append(`
       <li>Add bitters to make a proper cocktail!</li>

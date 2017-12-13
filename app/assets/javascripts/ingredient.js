@@ -12,6 +12,6 @@ function createIngredient() {
   }, "json").fail(function(xhr, status, error) {
     $("#error").empty()
     $("#error").append(`<div class="alert alert-danger">${xhr.responseText}</div>`)
-  })
-  
+  }) 
+
 }
