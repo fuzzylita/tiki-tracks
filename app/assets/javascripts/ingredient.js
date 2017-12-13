@@ -7,11 +7,22 @@ function createIngredient() {
   }
 
   $.post("/ingredients", newIng).done(function(resp){
-    $("#ingredients-list").append(`<li><strong>${resp.name}</strong></li>`)
     $("#new-ingredient").val("")
+    ingredientsList()
   }, "json").fail(function(xhr, status, error) {
     $("#error").empty()
     $("#error").append(`<div class="alert alert-danger">${xhr.responseText}</div>`)
-  }) 
+  })  
+}
 
+function ingredientsList() {
+  $.getJSON('/ingredients', (resp) => {
+    
+    let ings = ""
+    resp.forEach((ing) => {
+      ings += `<li><strong>${ing.name}</strong></li>`
+    })
+    
+    $('#ingredients-list').html(ings)
+  })
 }
